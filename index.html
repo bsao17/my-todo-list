@@ -14,7 +14,7 @@
         <h1 class="text-center text-white"> {{title}} </h1>
         <section class="border border-white w-75 d-flex flex-column align-items-center" id="root">
             <div class="text-white">Counter : <span> {{count}} </span> </div>
-            <input class="w-100 text-center " id="countValue" type="text" v-on:keyup.enter="counterWrite" placeholder="Write a task and click enter">
+            <input class="w-100 text-center " id="countValue" type="text" v-on:keyup.enter="counterWrite" placeholder="write a task and time then click enter">
             <div><button v-on:click="taskLess()" class="btn btn-primary">Task Remove</button></div>
         </section>
         <div class="text-white w-75 m-auto">Nous somme le : {{time}}</div>
