@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en/fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>My toDo List</title>
+</head>
+<body class="bg-dark">
+    
+    <div id="my-app">
+        <h1 class="text-center text-white"> {{title}} </h1>
+        <section class="border border-white w-75 d-flex flex-column align-items-center" id="root">
+            <div class="text-white">Counter : <span> {{count}} </span> </div>
+            <input class="w-100 text-center " id="countValue" type="text" v-on:keyup.enter="counterWrite" placeholder="Write a task and click enter">
+            <div><button v-on:click="taskLess()" class="btn btn-primary">Task Remove</button></div>
+        </section>
+        <div class="text-white w-75 m-auto">Nous somme le : {{time}}</div>
+
+
+    </div>
+
+    <script>
+        new Vue({
+            el:"#my-app",
+            data:{
+                title:'My ToDo List...',
+                count: 0,
+                time: new Date()
+            },
+            methods:{
+                counterMore: function(){
+                    this.count++
+                },
+                counterLess: function(){
+                    this.count--;
+                },
+                counterWrite: function(){
+                    let p = document.createElement('div');
+                    p.setAttribute('id', 'toDo');
+                    p.textContent = document.getElementById('countValue').value;
+                    document.getElementById('root').appendChild(p)
+                    this.counterMore()
+                },
+                taskLess: function(){
+                    let task = document.getElementById('toDo');
+                    let container = document.getElementById('root');
+                    container.removeChild(task);
+                    this.counterLess();
+                }
+            }
+        })
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>
